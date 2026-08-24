@@ -1,0 +1,1 @@
+alter table paid_collabs add column if not exists other_platform text;

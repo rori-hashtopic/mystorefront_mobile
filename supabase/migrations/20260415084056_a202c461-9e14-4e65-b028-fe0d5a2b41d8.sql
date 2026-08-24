@@ -1,0 +1,1 @@
+ALTER TABLE discount_codes ADD COLUMN needs_sync BOOLEAN NOT NULL DEFAULT TRUE;

@@ -1,0 +1,1 @@
+ALTER TABLE public.instagram_posts ADD COLUMN IF NOT EXISTS cached_media_path TEXT;

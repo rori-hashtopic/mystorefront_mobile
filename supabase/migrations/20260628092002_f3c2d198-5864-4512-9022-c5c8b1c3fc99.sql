@@ -1,0 +1,1 @@
+ALTER TABLE public.brand_payments ADD COLUMN IF NOT EXISTS payment_reference text;

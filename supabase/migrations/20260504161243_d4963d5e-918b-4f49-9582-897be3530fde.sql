@@ -1,0 +1,1 @@
+ALTER TABLE public.brand_waitlist ADD COLUMN IF NOT EXISTS store_platform text;

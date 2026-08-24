@@ -1,0 +1,1 @@
+ALTER TABLE public.brand_accounts ADD COLUMN IF NOT EXISTS plan_tier text NOT NULL DEFAULT 'free' CHECK (plan_tier IN ('free','premium'));

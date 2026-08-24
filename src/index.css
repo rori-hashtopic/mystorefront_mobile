@@ -1,0 +1,346 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Unified Design System - Based on /shop page styling */
+
+@layer base {
+  :root {
+    /* Clean, minimal palette - white backgrounds, light grey surfaces */
+    --background: 40 20% 98%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    /* Subtle coral/terracotta accent - used sparingly for CTAs */
+    --primary: 12 76% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft warm gray for secondary elements */
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 220 20% 20%;
+
+    /* Muted tones */
+    --muted: 40 10% 92%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Accent - gold/amber for highlights */
+    --accent: 40 15% 94%;
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 15% 90%;
+    --input: 40 15% 90%;
+    --ring: 12 76% 55%;
+
+    --radius: 0.75rem;
+
+    /* Navigation - NOW MATCHES BACKGROUND (light) */
+    --nav: 0 0% 100%;
+    --nav-foreground: 220 20% 10%;
+    --nav-muted: 220 10% 45%;
+
+    /* Success/positive */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Tier colors */
+    --tier-enthusiast: 220 15% 50%;
+    --tier-ambassador: 280 60% 55%;
+    --tier-trendsetter: 38 92% 50%;
+    --tier-icon: 12 76% 55%;
+
+    /* Surface variations */
+    --surface: 40 15% 96%;
+    --surface-elevated: 0 0% 100%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 10%;
+    --sidebar-primary: 12 76% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 15% 94%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 40 15% 90%;
+    --sidebar-ring: 12 76% 55%;
+  }
+
+  .dark {
+    --background: 220 25% 6%;
+    --foreground: 40 15% 95%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 40 15% 95%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 40 15% 95%;
+
+    --primary: 12 76% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 40 15% 90%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 220 20% 18%;
+    --accent-foreground: 40 15% 95%;
+
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 12 76% 55%;
+
+    --nav: 220 25% 10%;
+    --nav-foreground: 40 15% 95%;
+    --nav-muted: 220 10% 55%;
+
+    --surface: 220 25% 8%;
+    --surface-elevated: 220 25% 12%;
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 40 15% 95%;
+    --sidebar-primary: 12 76% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 40 15% 95%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 12 76% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+
+  @media (max-width: 767px) {
+    input,
+    textarea,
+    select,
+    button,
+    [role="combobox"] {
+      font-size: 16px;
+    }
+  }
+}
+
+@layer components {
+  /* Primary button - pill shaped, solid fill */
+  .btn-primary {
+    @apply bg-foreground text-background hover:bg-foreground/90 rounded-full transition-all duration-200 font-medium;
+  }
+
+  /* Ghost button - transparent with subtle hover */
+  .btn-ghost {
+    @apply bg-transparent hover:bg-secondary rounded-full transition-all duration-200;
+  }
+
+  /* Cards - soft shadow, rounded corners */
+  .card-elevated {
+    @apply bg-card rounded-2xl shadow-card border border-border/50;
+  }
+
+  /* Navigation link styling - sentence case, subtle */
+  .nav-link {
+    @apply text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-foreground;
+  }
+
+  /* Tier pills */
+  .tier-pill {
+    @apply px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .tier-enthusiast {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  .tier-ambassador {
+    @apply bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300;
+  }
+
+  .tier-trendsetter {
+    @apply bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300;
+  }
+
+  .tier-icon {
+    @apply bg-primary/10 text-primary;
+  }
+
+  /* Input styling */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-border bg-background focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all duration-200 text-sm;
+  }
+
+  /* Progress indicators */
+  .progress-dot {
+    @apply w-2 h-2 rounded-full bg-border transition-all duration-300;
+  }
+
+  .progress-dot-active {
+    @apply bg-foreground w-6;
+  }
+
+  /* Modal styling */
+  .modal-overlay {
+    @apply fixed inset-0 bg-foreground/40 backdrop-blur-sm z-50 flex items-center justify-center;
+  }
+
+  .modal-content {
+    @apply bg-card rounded-2xl shadow-elegant max-w-lg w-full mx-4 max-h-[90vh] overflow-hidden;
+  }
+
+  /* Tab styling - pill-shaped tabs */
+  .tab-pill {
+    @apply text-sm font-medium transition-all duration-200 px-3 py-1.5 rounded-full whitespace-nowrap;
+  }
+
+  .tab-pill-active {
+    @apply border border-foreground text-foreground;
+  }
+
+  .tab-pill-inactive {
+    @apply text-muted-foreground hover:text-foreground;
+  }
+
+  /* Badge styling */
+  .badge-subtle {
+    @apply px-2.5 py-0.5 rounded-full text-xs font-medium bg-secondary text-secondary-foreground;
+  }
+
+  /* Table styling */
+  .table-header {
+    @apply bg-secondary/50 text-muted-foreground text-xs font-medium uppercase tracking-wider;
+  }
+
+  .table-row {
+    @apply border-b border-border hover:bg-secondary/30 transition-colors;
+  }
+
+  .table-cell {
+    @apply px-4 py-3 text-sm;
+  }
+
+  /* Empty state */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-16 text-center;
+  }
+
+  .empty-state-icon {
+    @apply w-16 h-16 rounded-full bg-secondary flex items-center justify-center mb-6;
+  }
+
+  /* Loading skeleton */
+  .skeleton {
+    @apply bg-secondary animate-pulse rounded-lg;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Native date inputs: push the calendar picker icon to the right edge of the field.
+   Without this it sits immediately after the date text, stranded mid-field on
+   full-width inputs. Applies app-wide to every <input type="date">. */
+input[type="date"] {
+  position: relative;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0.75rem;
+  margin-left: auto;
+  cursor: pointer;
+}

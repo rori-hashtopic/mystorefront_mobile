@@ -1,0 +1,1 @@
+UPDATE affiliate_clicks SET brand_id = '5124ec25-8a5e-48a6-9bfc-9d708b203e6a' WHERE click_id = '46d51579-1be4-4f82-beb9-406aed89b32e';

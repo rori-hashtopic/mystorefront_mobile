@@ -1,0 +1,4 @@
+DROP INDEX IF EXISTS idx_discount_codes_shopify_price_rule_id;
+
+CREATE UNIQUE INDEX idx_discount_codes_shopify_price_rule_id
+ON public.discount_codes (shopify_price_rule_id);

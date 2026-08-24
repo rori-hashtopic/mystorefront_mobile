@@ -1,0 +1,2 @@
+-- Grant owner_user_id and commission_percent columns too (needed for RLS policies and brand owner queries)
+GRANT SELECT (owner_user_id, commission_percent, last_postback_at, tracking_status) ON public.brand_accounts TO authenticated;

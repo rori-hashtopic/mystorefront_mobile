@@ -1,0 +1,1 @@
+ALTER TABLE public.paid_collabs ADD COLUMN IF NOT EXISTS creator_ids uuid[];

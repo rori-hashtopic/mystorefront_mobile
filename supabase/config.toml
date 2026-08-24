@@ -1,0 +1,18 @@
+project_id = "lhzqnkrjqaebcfxcmlgd"
+
+[functions.woocommerce-coupon-webhook]
+verify_jwt = false
+
+[functions.brand-onboarding-create]
+verify_jwt = false
+
+# Called by the discount_codes DB triggers (notify_push_discount_code /
+# handle_discount_code_delete), which send X-Internal-Secret but CANNOT send a
+# user JWT. With JWT verification on, the platform rejected every trigger call
+# with 401 before the function ran — so pushes to Shopify/WooCommerce never
+# happened and codes sat on "Pending" forever.
+# This is not unauthenticated: the function itself requires either the service
+# role key or the push_discount_internal_token vault secret, and returns 401
+# otherwise.
+[functions.push-discount-code]
+verify_jwt = false

@@ -1,0 +1,1 @@
+DELETE FROM public.brand_payments WHERE brand_id = '8e066440-7a94-40bd-b8f8-686fb2717eb8';

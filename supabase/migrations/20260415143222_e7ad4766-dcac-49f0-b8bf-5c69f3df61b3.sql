@@ -1,0 +1,1 @@
+DROP TRIGGER IF EXISTS on_discount_code_change ON public.discount_codes;

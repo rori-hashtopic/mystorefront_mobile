@@ -1,0 +1,1 @@
+GRANT SELECT (media_count) ON public.instagram_connections TO authenticated;

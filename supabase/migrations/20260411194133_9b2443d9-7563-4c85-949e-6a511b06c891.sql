@@ -1,0 +1,1 @@
+ALTER TABLE public.brand_accounts ADD COLUMN refund_buffer_days integer NOT NULL DEFAULT 30;

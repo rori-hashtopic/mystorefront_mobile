@@ -1,0 +1,2 @@
+UPDATE public.profiles SET display_name = 'Roxi HashTopic' WHERE email ILIKE 'roxi@hashtopic.co.za' AND (display_name IS NULL OR length(trim(display_name)) < 2);
+DELETE FROM public.creator_waitlist WHERE email ILIKE 'roxi@hashtopic.co.za' AND (full_name IS NULL OR length(trim(full_name)) < 2);
