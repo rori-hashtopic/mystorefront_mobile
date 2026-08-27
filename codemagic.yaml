@@ -36,24 +36,20 @@ workflows:
         script: npm run build
       - name: Sync to iOS
         script: npx cap sync ios
-      - name: Set up provisioning
-        script: |
-          cd ios/App
-          pod install
-      - name: Build for iOS
+      - name: Build for iOS Simulator
         script: |
           cd ios/App
           xcodebuild -workspace App.xcworkspace \
             -scheme App \
             -configuration Release \
-            -sdk iphoneos \
+            -sdk iphonesimulator \
             -derivedDataPath build
       - name: Archive app
         script: |
-          cd ios/App/build/Build/Products/Release-iphoneos
+          cd ios/App/build/Build/Products/Release-iphonesimulator
           zip -r App.zip App.app
     artifacts:
-      - ios/App/build/Build/Products/Release-iphoneos/App.zip
+      - ios/App/build/Build/Products/Release-iphonesimulator/App.zip
     publishing:
       email:
         recipients:
