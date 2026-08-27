@@ -1,0 +1,60 @@
+workflows:
+  android-build:
+    name: Build Android APK
+    instance_type: linux
+    max_build_duration: 30
+    environment:
+      java: default
+    scripts:
+      - name: Install Node dependencies
+        script: npm install
+      - name: Build web bundle
+        script: npm run build
+      - name: Sync to Android
+        script: npx cap sync android
+      - name: Build APK
+        script: |
+          cd android
+          ./gradlew assembleRelease
+    artifacts:
+      - android/app/build/outputs/apk/release/app-release-unsigned.apk
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
+
+  ios-build:
+    name: Build iOS App
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      xcode: latest
+    scripts:
+      - name: Install Node dependencies
+        script: npm install
+      - name: Build web bundle
+        script: npm run build
+      - name: Sync to iOS
+        script: npx cap sync ios
+      - name: Set up provisioning
+        script: |
+          cd ios/App
+          pod install
+      - name: Build for iOS
+        script: |
+          cd ios/App
+          xcodebuild -workspace App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build
+      - name: Archive app
+        script: |
+          cd ios/App/build/Build/Products/Release-iphoneos
+          zip -r App.zip App.app
+    artifacts:
+      - ios/App/build/Build/Products/Release-iphoneos/App.zip
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
