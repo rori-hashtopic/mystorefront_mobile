@@ -5,6 +5,8 @@ workflows:
     max_build_duration: 30
     environment:
       java: default
+      groups:
+        - supabase_credentials
     scripts:
       - name: Install Node dependencies
         script: npm install
@@ -29,6 +31,8 @@ workflows:
     max_build_duration: 60
     environment:
       xcode: latest
+      groups:
+        - supabase_credentials
     scripts:
       - name: Install Node dependencies
         script: npm install
